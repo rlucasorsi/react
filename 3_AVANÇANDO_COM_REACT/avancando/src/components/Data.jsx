@@ -9,7 +9,7 @@ const Data = () => {
     <div>
         <div>
             <p>Valor: {someData}</p>
-            <button onClick={() => (someData = 15)}>Mudar variável</button>
+            {/* <button onClick={() => (someData = 15)}>Mudar variável</button> */}
         </div>
         <div>
             <p>Valor: {anotherNumber} </p>

@@ -6,6 +6,8 @@ import city from "./assets/city.jpg";
 
 import Data from './components/Data';
 
+import ListRender from './components/ListRender';
+
 function App() {
 
   return (
@@ -16,6 +18,7 @@ function App() {
       <img src={city} alt="Outra imagem" />
       {/* useState */}
       <Data/>
+      <ListRender/>
     </div>
 
   )
