@@ -17,6 +17,13 @@ import Fragments from "./components/Fragments";
 
 import Container from "./components/Container";
 
+// Função em prop
+import ExecuteFunction from "./components/ExecuteFunction";
+// state lift
+import { useState } from "react";
+import Message from "./components/Message";
+import ChangeMessage from "./components/ChangeMessage";
+
 // renderização de listas com componentes
 const cars = [
   { id: 1, brand: "Ferrari", color: "Amarelo", km: 0 },
@@ -25,6 +32,17 @@ const cars = [
 ];
 
 function App() {
+  // Função em prop
+  function showMessage() {
+    console.log("Executou a função");
+  }
+
+  // state lift
+  const [message, setMessage] = useState("");
+
+  const handleMessage = (msg) => {
+    setMessage(msg);
+  };
   return (
     <div className="App" style={{ paddingBottom: "500px" }}>
       <h1>Avançando com React</h1>
@@ -56,6 +74,11 @@ function App() {
         <h2>Titulo do componente pai</h2>
         <p>Conteudo do componente pai</p>
       </Container>
+      {/* Função em prop */}
+      <ExecuteFunction myFunction={showMessage} />
+      {/* state lift */}
+      <Message msg={message} />
+      <ChangeMessage handleMessage={handleMessage} />
     </div>
   );
 }
