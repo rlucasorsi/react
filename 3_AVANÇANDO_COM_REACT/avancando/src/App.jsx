@@ -13,6 +13,17 @@ import ShowUserName from "./components/ShowUserName";
 
 import CarDatails from "./components/CarDatails";
 
+import Fragments from "./components/Fragments";
+
+import Container from "./components/Container";
+
+// renderização de listas com componentes
+const cars = [
+  { id: 1, brand: "Ferrari", color: "Amarelo", km: 0 },
+  { id: 2, brand: "KIA", color: "Branco", km: 200000 },
+  { id: 3, brand: "Renault", color: "Azul", km: 32000 },
+];
+
 function App() {
   return (
     <div className="App" style={{ paddingBottom: "500px" }}>
@@ -27,7 +38,24 @@ function App() {
       {/* Props */}
       <ShowUserName name="Lucas" />
       {/* Destruturando props */}
-      <CarDatails brand="BMW" km={10500} color="Vermelho"/>
+      <CarDatails brand="BMW" km={10500} color="Vermelho" />
+      {/* Reaproveitamento de componentes */}
+      <CarDatails brand="VW" km={182500} color="Prata" />
+      <CarDatails km={50850} brand="Fiat" color="Azul" />
+      {/* renderização de lista com componente */}
+      {cars.map((car) => (
+        <CarDatails
+          key={car.id}
+          brand={car.brand}
+          color={car.color}
+          km={car.km}
+        />
+      ))}
+      <Fragments />
+      <Container>
+        <h2>Titulo do componente pai</h2>
+        <p>Conteudo do componente pai</p>
+      </Container>
     </div>
   );
 }
