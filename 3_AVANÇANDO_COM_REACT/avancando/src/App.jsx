@@ -2,21 +2,13 @@ import "./App.css";
 
 // Imagem em assets
 import city from "./assets/city.jpg";
-
 import ConditionalRender from "./components/ConditionalRender";
-
 import Data from "./components/Data";
-
 import ListRender from "./components/ListRender";
-
 import ShowUserName from "./components/ShowUserName";
-
 import CarDatails from "./components/CarDatails";
-
 import Fragments from "./components/Fragments";
-
 import Container from "./components/Container";
-
 // Função em prop
 import ExecuteFunction from "./components/ExecuteFunction";
 // state lift
