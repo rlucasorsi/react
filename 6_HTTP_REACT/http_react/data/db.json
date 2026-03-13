@@ -1,0 +1,55 @@
+{
+  "products": [
+    {
+      "id": "5",
+      "name": "capa de chuva",
+      "price": "50.50"
+    },
+    {
+      "id": "6",
+      "name": "teclado",
+      "price": "90.00"
+    },
+    {
+      "id": "7",
+      "name": "cadeira",
+      "price": "200"
+    },
+    {
+      "id": "8",
+      "name": "teste",
+      "price": "100"
+    },
+    {
+      "id": "9",
+      "name": "teste",
+      "price": "100"
+    },
+    {
+      "id": "10",
+      "name": "teste",
+      "price": "100"
+    },
+    {
+      "id": "11",
+      "name": "cama",
+      "price": "20"
+    },
+    {
+      "id": "dc08",
+      "name": "101",
+      "price": "10"
+    },
+    {
+      "id": "6e92",
+      "name": "101",
+      "price": "10"
+    },
+    {
+      "id": "9b14",
+      "name": "teste",
+      "price": "50"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
