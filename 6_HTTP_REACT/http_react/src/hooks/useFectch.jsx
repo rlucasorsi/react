@@ -1,0 +1,63 @@
+import {useState, useEffect} from 'react'
+
+// 4 - Custom hook
+
+
+export const useFetch = (url) => {
+    const [data, setData] = useState(null)
+
+    // 5- refatorando post
+    const [config, setConfig] = useState(null)
+    const [method, setmethod] = useState(null)
+    const [callFetch, setCallFetch] = useState(null)
+
+
+    const httpConfig = (data, method) => {
+        if(method === "POST") {
+            setConfig({
+                method,
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+
+            setmethod(method)
+        }
+    }
+
+     useEffect(() => {
+
+        const fetchData = async () => {
+            const res = await fetch(url)
+            const json = await res.json()
+
+            setData(json)
+        }
+
+        fetchData()
+    }, [url, callFetch]);
+
+    // 5- Refatorando post
+
+    useEffect(() => {
+      
+        const httpRequest = async() => {
+            let json
+            if(method === "POST") {
+                let fetchOptions = [url, config]
+
+                const res = await fetch(...fetchOptions)
+
+                json = await res.json()
+            }
+            setCallFetch(json)
+        }
+
+        httpRequest();
+
+    }, [config, method, url])
+    
+
+    return { data, httpConfig }
+}

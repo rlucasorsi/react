@@ -1,26 +1,33 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
+
+import { useFetch } from "./hooks/useFectch"
 
 const url = "http://localhost:3000/products"
 
 import './App.css'
 
 function App() {
+
+
+  //  4- Custom hook
+  const {data: items, httpConfig} = useFetch(url)
+
   // 1- resgatando dados 
-  const [products, setProducts] = useState([])
+//  const [products, setProducts] = useState([])
 
-  useEffect(() => {
+  // useEffect(() => {
 
-    async function getData() {
-      const res = await fetch(url)
+  //   async function getData() {
+  //     const res = await fetch(url)
 
-      const data = await res.json()
+  //     const data = await res.json()
       
-      setProducts(data)
-    }
+  //     setProducts(data)
+  //   }
 
-    getData()
+  //   getData()
       
-  }, [])
+  // }, [])
 
 
   const handleSubmit = async (e) => {
@@ -30,21 +37,22 @@ function App() {
       name, 
       price
     }
+    // 5- refatorando post
+    httpConfig(product, "POST")
 
-   const res = await fetch(url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(product),
-   })
+
+  //  const res = await fetch(url, {
+  //   method: "POST",
+  //   headers: {
+  //     "Content-Type": "application/json"
+  //   },
+  //   body: JSON.stringify(product),
+  //  })
   
-  //  3 - carregamento dinamico
-  const addedProduct = await res.json()
+  // //  3 - carregamento dinamico
+  // const addedProduct = await res.json()
    
-  setProducts((prevProducts) => [...prevProducts, addedProduct])
-   
-   
+  // setProducts((prevProducts) => [...prevProducts, addedProduct])
   }
 
 
@@ -57,7 +65,7 @@ const [price, setPrice] = useState("")
       <h1>HTTP COM REACT</h1>
       {/* 1- Resgate de dados */}
      <ul>
-      {products.map((product) => (
+      {items && items.map((product) => (
         <li key={product.id}>{product.name} - {product.price}</li>
       ))}
      </ul>

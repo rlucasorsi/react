@@ -49,6 +49,11 @@
       "id": "9b14",
       "name": "teste",
       "price": "50"
+    },
+    {
+      "id": "d32c",
+      "name": "Ovo",
+      "price": "5"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
