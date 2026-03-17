@@ -10,7 +10,7 @@ function App() {
 
 
   //  4- Custom hook
-  const {data: items, httpConfig, loading} = useFetch(url)
+  const {data: items, httpConfig, loading, error} = useFetch(url)
 
   // 1- resgatando dados 
 //  const [products, setProducts] = useState([])
@@ -63,7 +63,10 @@ const [price, setPrice] = useState("")
   return (
     <div className="app">
       <h1>HTTP COM REACT</h1>
+      {/* 6 - loading */}
       {loading && <p>Carregando...</p>}
+      {/* 7- tratando erro */}
+      {error && <p>{error}</p>}
       {/* 1- Resgate de dados */}
      <ul>
       {items && items.map((product) => (
