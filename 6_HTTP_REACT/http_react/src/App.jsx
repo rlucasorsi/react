@@ -10,7 +10,7 @@ function App() {
 
 
   //  4- Custom hook
-  const {data: items, httpConfig} = useFetch(url)
+  const {data: items, httpConfig, loading} = useFetch(url)
 
   // 1- resgatando dados 
 //  const [products, setProducts] = useState([])
@@ -63,6 +63,7 @@ const [price, setPrice] = useState("")
   return (
     <div className="app">
       <h1>HTTP COM REACT</h1>
+      {loading && <p>Carregando...</p>}
       {/* 1- Resgate de dados */}
      <ul>
       {items && items.map((product) => (
@@ -80,7 +81,10 @@ const [price, setPrice] = useState("")
           <span>Preço</span>
           <input type="text" value={price} onChange={(e) => setPrice(e.target.value)}></input>
         </label>
-        <input type="submit" value="Enviar"></input>
+        {/* <input type="submit" value="Enviar"></input> */}
+        {/* 7 - Loading post */}
+        {loading && <input type="submit" disabled value="Aguarde.."/>}
+        {!loading && <input type="submit" value="Enviar"/>}
       </form>
      </div>
     </div>

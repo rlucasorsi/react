@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 
 // 4 - Custom hook
 
@@ -8,12 +8,15 @@ export const useFetch = (url) => {
 
     // 5- refatorando post
     const [config, setConfig] = useState(null)
-    const [method, setmethod] = useState(null)
+    const [method, setMethod] = useState(null)
     const [callFetch, setCallFetch] = useState(null)
 
+    // 6- loading
+    const [loading, setLoading] = useState(false)
 
+    // POST config http    
     const httpConfig = (data, method) => {
-        if(method === "POST") {
+        if (method === "POST") {
             setConfig({
                 method,
                 headers: {
@@ -22,15 +25,21 @@ export const useFetch = (url) => {
                 body: JSON.stringify(data)
             });
 
-            setmethod(method)
+            setMethod(method)
         }
     }
 
-     useEffect(() => {
-
+    // requisição GET  fetch
+    useEffect(() => {
         const fetchData = async () => {
+            // 6- loading
+            setLoading(true)
+
             const res = await fetch(url)
             const json = await res.json()
+
+            // 6- loading
+            setLoading(false)
 
             setData(json)
         }
@@ -41,15 +50,20 @@ export const useFetch = (url) => {
     // 5- Refatorando post
 
     useEffect(() => {
-      
-        const httpRequest = async() => {
+        const httpRequest = async () => {
             let json
-            if(method === "POST") {
+
+            if (method === "POST") {
+                // 6- loading
+                setLoading(true)
                 let fetchOptions = [url, config]
 
                 const res = await fetch(...fetchOptions)
 
                 json = await res.json()
+
+                // 6- loading
+                setLoading(false)
             }
             setCallFetch(json)
         }
@@ -57,7 +71,7 @@ export const useFetch = (url) => {
         httpRequest();
 
     }, [config, method, url])
-    
 
-    return { data, httpConfig }
+
+    return { data, httpConfig, loading }
 }
