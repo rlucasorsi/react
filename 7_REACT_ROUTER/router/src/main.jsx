@@ -12,6 +12,8 @@ import ErrorPage from './routes/ErrorPage.jsx';
 // Pagina de home
 import Home from './routes/Home.jsx';
 
+import Product from './routes/Product.jsx';
+
 import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
 
 const router = createBrowserRouter([
@@ -28,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: '/contact',
         element: <Contact />,
+      },
+      {
+        path: 'products/:id',
+        element: <Product />,
       },
     ],
   },
