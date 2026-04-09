@@ -12,7 +12,11 @@ import ErrorPage from './routes/ErrorPage.jsx';
 // Pagina de home
 import Home from './routes/Home.jsx';
 
+// Pagina de produto
 import Product from './routes/Product.jsx';
+
+// Pagina info (nested router)
+import Info from './routes/Info.jsx';
 
 import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
 
@@ -34,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: 'products/:id',
         element: <Product />,
+      },
+      {
+        path: 'products/:id/info',
+        element: <Info />,
       },
     ],
   },
